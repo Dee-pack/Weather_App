@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app" id="app" data-condition="default">
+    <header class="app__header">
+      <h1 class="app__title">Weather</h1>
+
+      <form id="weather-form" class="search" autocomplete="off">
+        <label for="location-input" class="visually-hidden">City or location</label>
+        <input
+          type="text"
+          id="location-input"
+          class="search__input"
+          placeholder="Try “Lagos” or “Tokyo”"
+          required
+        />
+        <button type="submit" class="search__button">Search</button>
+      </form>
+
+      <button
+        type="button"
+        id="unit-toggle"
+        class="unit-toggle"
+        aria-label="Switch temperature units"
+        disabled
+      >
+        °F
+      </button>
+    </header>
+
+    <section id="loading" class="loading" hidden aria-live="polite">
+      <span class="loading__spinner" aria-hidden="true"></span>
+      <span>Fetching the sky…</span>
+    </section>
+
+    <section id="error" class="error" hidden role="alert"></section>
+
+    <section id="weather-display" class="weather" hidden aria-live="polite">
+      <div class="weather__main">
+        <p class="weather__location" id="w-location"></p>
+        <p class="weather__icon" id="w-icon" aria-hidden="true"></p>
+        <p class="weather__temp"><span id="w-temp"></span><span class="weather__unit" id="w-unit-label"></span></p>
+        <p class="weather__condition" id="w-condition"></p>
+        <p class="weather__hilo">
+          <span id="w-high"></span> &nbsp;/&nbsp; <span id="w-low"></span>
+        </p>
+      </div>
+
+      <dl class="weather__details">
+        <div class="weather__detail">
+          <dt>Feels like</dt>
+          <dd id="w-feelslike"></dd>
+        </div>
+        <div class="weather__detail">
+          <dt>Humidity</dt>
+          <dd id="w-humidity"></dd>
+        </div>
+        <div class="weather__detail">
+          <dt>Wind</dt>
+          <dd id="w-wind"></dd>
+        </div>
+        <div class="weather__detail">
+          <dt>UV index</dt>
+          <dd id="w-uv"></dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="empty" id="empty-state">
+      <p>Search a city to see the current weather.</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
